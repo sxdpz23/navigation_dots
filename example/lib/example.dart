@@ -6,9 +6,17 @@ class NavigationDotsExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NavigationDots(
+      keepScrollable: true,
+      showNavigatorBar: false,
       children: <Widget>[
         Container(color: Colors.blueAccent),
-        Container(color: Colors.greenAccent),
+        Container(color: Colors.white),
+        Container(color: Colors.pinkAccent),
+        Container(color: Colors.blueAccent),
+        Container(color: Colors.white),
+        Container(color: Colors.pinkAccent),
+        Container(color: Colors.blueAccent),
+        Container(color: Colors.white),
         Container(color: Colors.pinkAccent),
       ],
     );
