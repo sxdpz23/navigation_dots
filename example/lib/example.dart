@@ -5,20 +5,25 @@ class NavigationDotsExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NavigationDots(
-      keepScrollable: true,
-      showNavigatorBar: false,
-      children: <Widget>[
-        Container(color: Colors.blueAccent),
-        Container(color: Colors.white),
-        Container(color: Colors.pinkAccent),
-        Container(color: Colors.blueAccent),
-        Container(color: Colors.white),
-        Container(color: Colors.pinkAccent),
-        Container(color: Colors.blueAccent),
-        Container(color: Colors.white),
-        Container(color: Colors.pinkAccent),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Navigation Dots Example',
+          softWrap: true,
+          style: TextStyle(
+            color: Colors.white
+          ),
+        ),
+        centerTitle: true,
+        elevation: 20.0,
+        backgroundColor: Colors.black,
+      ),
+      body: NavigationDots(
+        children: <Widget>[
+          Container(color: Colors.white),
+          Container(color: Colors.lightBlueAccent),
+          Container(color: Colors.blueGrey),
+        ],
+      ),
     );
   }
 }
