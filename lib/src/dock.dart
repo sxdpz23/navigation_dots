@@ -11,7 +11,7 @@ class Dock extends StatelessWidget {
   final Function onTapAction;
   final bool showBar;
 
-  Dock(
+  const Dock(
       {Key? key,
       required this.padding,
       required this.color,
@@ -44,10 +44,10 @@ class Dock extends StatelessWidget {
                     width: 30.0 * dotCount,
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
           Positioned(
             child: Center(
-              child: Container(
+              child: SizedBox(
                 width: 30.0 * dotCount,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
