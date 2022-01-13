@@ -14,9 +14,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: [stable, beta, dev]
     
-    container:
-      image:  google/dart:latest
+#     container:
+#       image:  google/dart:latest
 
     steps:
       - uses: actions/checkout@v2
@@ -25,7 +29,7 @@ jobs:
       # You can specify other versions if desired, see documentation here:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
 #       - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+#       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
 
 #       - name: Install dependencies
 #         run: flutter pub get
@@ -33,7 +37,7 @@ jobs:
       - name: Flutter action
         uses: subosito/flutter-action@v1
         with:
-          channel: stable
+          channel: ${{ matrix.channel }}
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
