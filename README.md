@@ -1,5 +1,15 @@
+
 <h1 align="center">Notification Dots</h1>
 
+```dart
+NavigationDots(
+  children: <Widget>[
+    Container(color: Colors.white),
+    Container(color: Colors.lightBlueAccent),
+    Container(color: Colors.blueGrey),
+  ],
+),
+```
 
 
 ## Features
