@@ -53,12 +53,26 @@ jobs:
 #       - name: Run tests
 #         run: dart test
         
-      - name: Run tests with coverage
-        run: pub run test --coverage="coverage"
-      - name: Convert coverage to ICOV
-        run: pub run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
-      - name: Upload coverage to Codecov  
-        uses: codecov/codecov-action@v1.0.2
+#       - name: Run tests with coverage
+#         run: pub run test --coverage="coverage"
+#       - name: Convert coverage to ICOV
+#         run: pub run coverage:format_coverage --lcov --in=coverage --out=coverage.lcov --packages=.packages --report-on=lib
+#       - name: Upload coverage to Codecov  
+#         uses: codecov/codecov-action@v1.0.2
+#         with:
+#           token: ${{secrets.CODECOV_TOKEN}}
+#           file: coverage.lcov
+
+      - name: Run Tests
+        run: |
+          flutter pub get
+          flutter format --dry-run --set-exit-if-changed .
+          flutter analyze --no-pub
+          flutter test --no-pub --coverage
+      - name: Upload coverage to Codecov
+        if: ${{ matrix.channel == 'stable' }}
+        uses: codecov/codecov-action@v1
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: coverage/lcov.info
+          
